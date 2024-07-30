@@ -11,10 +11,10 @@ export default definePlugin({
     ],
     patches: [
         {
-    find: "ENTER)&&(null",
+    find: ".customItem;",
     replacement: {
-        match: /{onClick:(\i),/,
-        replace: "$&onMouseUp:$1,"
+        match: /onClick:(\i\?void 0:\i)/,
+        replace: "$&,onMouseUp:$1"
     }
 }
     ]
