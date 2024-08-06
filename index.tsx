@@ -11,11 +11,11 @@ export default definePlugin({
     ],
     patches: [
         {
-    find: ".customItem;",
-    replacement: {
-        match: /onClick:(\i\?void 0:\i)/,
-        replace: "$&,onMouseUp:$1"
-    }
-}
+            find: ".customItem;",
+            replacement: {
+                match: /onClick:(\i\?void 0:\i)/,
+                replace: "$&,onMouseUp:$1"
+            }
+        }
     ]
 })
