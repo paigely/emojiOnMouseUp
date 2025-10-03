@@ -8,11 +8,6 @@ import { definePluginSettings } from "@api/Settings";
 import { Devs } from "@utils/constants";
 import definePlugin, { OptionType } from "@utils/types";
 
-const replacement = {
-    match: /onClick:(\i\?void 0:\i)/,
-    replace: "$&,onMouseUp:$1"
-};
-
 const settings = definePluginSettings({
     applyOnAllItems: {
         type: OptionType.BOOLEAN,
@@ -34,10 +29,19 @@ export default definePlugin({
         },
     ],
     patches: [
-        { find: ".customItem;", replacement },
+        {
+            find: ".customItem;",
+            replacement: {
+                match: /onClick:(\i\?void 0:\i)/,
+                replace: "$&,onMouseUp:$1"
+            }
+        },
         {
             find: ",subMenuIconClassName:",
-            replacement,
+            replacement: {
+                match: /onClick:(\i\?void 0:\i)/,
+                replace: "$&,onMouseUp:$1"
+            },
             predicate: () => settings.store.applyOnAllItems
         }
     ]
